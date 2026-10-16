@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS student_management
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE student_management;
+
+CREATE TABLE IF NOT EXISTS admins (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS students (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    student_number VARCHAR(30) NOT NULL UNIQUE,
+    first_name VARCHAR(80) NOT NULL,
+    last_name VARCHAR(80) NOT NULL,
+    gender ENUM('Male','Female','Other') NOT NULL,
+    email VARCHAR(150) NULL,
+    phone VARCHAR(30) NULL,
+    department VARCHAR(100) NOT NULL,
+    year_level TINYINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
